@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="xithiox" />
+    <title>Little Simulation</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="scripts/lib/p5.min.js" defer></script>
+    <script src="scripts/utils.js" defer></script>
+    <script src="scripts/entity.js" defer></script>
+    <script src="scripts/entities.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+  </head>
+  <body>
+    <button id="menu-button" onclick="toggleMenu()">Controls (Q)</button>
+    <div id="menu">
+      <h1>General</h1>
+
+        <button class="btn btn-primary btn-sm" onclick="initEntities()">Clear screen (Enter)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="bMustRun=true">Start</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="bMustRun=false">Stop</button> <div class="divider"> </div>
+
+
+      <h1>Display</h1>
+
+        <button class="btn btn-primary btn-sm" onclick="chaseLines=!chaseLines">Chase Forces (Space)</button><div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="avoidLines=!avoidLines">Avoid Forces (Alt)</button><div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="showenergy=!showenergy">Energy Level(N)</button><div class="divider" > </div>
+
+        <button class="btn btn-primary btn-sm" onclick="showPerception=!showPerception">Perception Area (Ctrl)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="lineMode=!lineMode;if(lineMode){avoidLines=true;chaseLines=true;}else{avoidLines=false;chaseLines=false}">Cycle display mode (M)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="motionBlur=!motionBlur">Toggle motion blur (O)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="showChart=!showChart">Toggle species graph (G)</button> <div class="divider"> </div>
+
+      <h1>Pre-Build</h1>
+        <button class="btn btn-primary btn-sm" onclick="if(currentPreset!==0){currentPreset=0;initEntities()}">Default World - 0</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="if(currentPreset!==2){currentPreset=2;initEntities()}">Default World - 1</button> <div class="divider"> </div>
+
+        <div class="divider"> </div>
+
+
+      <h1>Entities</h1>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='food'">Food (F)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='pred'">Predator (P)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='prey'">Prey (B)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='fungus'">Fungus (V)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='hive'">Hive (H)</button> <div class="divider"> </div>
+
+        <button class="btn btn-primary btn-sm" onclick="selected='swarm'">Swarm (S)</button><div class="divider"> </div>
+
+        <h1> World Specs </h1>
+
+        <div class="dividerText"> </div>
+        <h4 style="color:azure">Light</h4><input type="range" min="1" max="5" value="5" step="1" class="slider" id="myRange" onchange="changeLight(this.value)">
+
+    </div>
+  </body>
+</html>
